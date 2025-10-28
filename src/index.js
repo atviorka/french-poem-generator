@@ -22,6 +22,10 @@ function generatePoem(event) {
     let context = "You are a hilarious rapper name generator. Please ensure the rap name is based on what's being submitted in the form via ${instructionsInput}. Your mission is to write the funny rap name in HTML format (do not include markdown in your response) and add a dollar sign for each letter 's' instead (only in the rap name), inside a <h2> element. Please add a <br/> after the rap name and add a funny 4 line rap verse. Add 2 x <br/> after the verse and sign it with 'SheCodes AI' inside a <strong> element - at the end and NOT at the beginning.";
     let apiURL = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
+    let poemElement = document.querySelector("#poem");
+    poemElement.classList.remove("hidden");
+    poemElement.innerHTML = `<div class="generating">⏳Generating your rap name based on: ${instructionsInput.value}</div>`;
+
     console.log("generating poem");
     console.log(`Prompt: ${prompt}`);
     console.log(`Context: ${context}`);
